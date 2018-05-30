@@ -51,11 +51,11 @@ public interface IModel {
 	
 	public void buildArea(Dimension dimension);
 	
-	public void addMobile(Mobile mobile);
+	public void addEntity(IEntity entity);
 	
-	public void removeMobile(Mobile mobile);
+	public void removeEntity(IEntity entity);
 	
-	public ArrayList<Mobile> getMobiles();
+	public ArrayList<IEntity> getEntities();
 	
-	public void setMobilesHasMoved();
+	public void setMobileHasMoved();
 }

@@ -8,6 +8,6 @@ public class Player extends Mobile {
 	private static int HEIGHT = 2;
 	
 	public Player(Direction direction, Position position, Image[] images) {
-		super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, images);
+		super(direction, position, SPEED, images);
 	}
 }

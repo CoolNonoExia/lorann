@@ -8,6 +8,6 @@ public class Spell extends Mobile {
 	private static int HEIGHT = 1;
 	
 	public Spell(Direction direction, Position position, Dimension dimension, Image[] images) {
-		super(direction, position, dimension, SPEED, images);
+		super(direction, position, SPEED, images);
 	}
 }

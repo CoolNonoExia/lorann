@@ -48,11 +48,12 @@ public final class ModelFacade implements IModel {
     public List<Example> getAllExamples() throws SQLException {
         return ExampleDAO.getAllExamples();
     }
-
+    
+    
     
     
     /* REAL CODE STARTS FROM HERE */
-    
+
 	@Override
 	public IArea getArea() {
 		// TODO Auto-generated method stub
@@ -66,26 +67,28 @@ public final class ModelFacade implements IModel {
 	}
 
 	@Override
-	public void addMobile(Mobile mobile) {
+	public void addEntity(IEntity entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void removeMobile(Mobile mobile) {
+	public void removeEntity(IEntity entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public ArrayList<Mobile> getMobiles() {
+	public ArrayList<IEntity> getEntities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setMobilesHasMoved() {
+	public void setMobileHasMoved() {
 		// TODO Auto-generated method stub
 		
 	}
+    
+	
 }

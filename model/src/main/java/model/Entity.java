@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Image;
 
-public class Entity {
+public class Entity implements IEntity {
 	protected static Dimension DIMENSION;
 	protected Image[] images;
 	protected IModel model;
@@ -11,5 +11,10 @@ public class Entity {
 	public Entity(Position position, Image[] images) {
 		this.position = position;
 		this.images = images;
+	}
+
+	@Override
+	public boolean hit() {
+		return false;
 	}
 }

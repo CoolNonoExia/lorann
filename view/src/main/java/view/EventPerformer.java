@@ -2,10 +2,11 @@ package view;
 
 import java.awt.event.KeyEvent;
 
+import controller.ControllerFacade;
 import controller.UserOrder;
 
 public class EventPerformer {
-	public EventPerformer(OrderPerformer orderPerformer) {
+	public EventPerformer(ControllerFacade orderPerformer) {
 		
 	}
 	public void eventPerform(KeyEvent KeyCode) {

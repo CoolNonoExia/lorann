@@ -3,10 +3,13 @@ package view;
 import java.awt.Graphics;
 import java.util.Observer;
 
+import model.Mobile;
+import model.ModelFacade;
+
 public class GraphicsBuilder {
-	private LorannModel lorannModel;
+	private ModelFacade lorannModel;
 	
-	public GraphicsBuilder(LorannModel lorannModel) {
+	public GraphicsBuilder(ModelFacade lorannModel) {
 		
 	}
 	public void applyModelToGraphic(Graphics graphics, Observer observer) {

@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Image;
+
 public class Spell {
 	private int Speed = 2;
 	private int Width = 1;
@@ -11,15 +13,17 @@ public class Spell {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void Background (dimension Dimension) {
+	public void Background (Dimension dimension) {
 		
 	}
 	
-	public dimension getDimension() {
+	public Dimension getDimension() {
+		return null;
 		
 	}
 	
-	public image getImage() {
+	public Image getImage() {
+		return null;
 		
 	}
 }

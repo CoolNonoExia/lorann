@@ -8,7 +8,7 @@ public class Dimension {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Dimension(dimension Dimension) {
+	public Dimension(Dimension dimension) {
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -1,5 +1,7 @@
 package controller;
 
+import model.LorannModel;
+
 public class LorannController {
 	private LorannView lorannView;
 	private LorannModel lorannModel;

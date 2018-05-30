@@ -13,7 +13,7 @@ public class Position {
 	}
 	
 	
-	public Position(position Position) {
+	public Position(Position position) {
 		// TODO Auto-generated constructor stub
 	}
 	

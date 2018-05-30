@@ -1,17 +1,21 @@
 package model;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Point;
+
 public class Mobile {
 	private int Speed;
 	
-	public Mobile(direction Direction, position Position, dimension Dimension, int Speed, image Image) {
+	public Mobile(Direction direction, Position position, Dimension dimension, int Speed, Image image) {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public direction getDirection() {
+	public Direction getDirection() {
 		return null;
 	}
 	
-	public void setDirection(direction Direction) {
+	public void setDirection(Direction direction) {
 		
 	}
 	
@@ -19,19 +23,22 @@ public class Mobile {
 		return null;
 	}
 	
-	public dimension getDimension() {
+	public Dimension getDimension() {
 		return null;
 	}
 	
 	public int getSpeed() {
+		return Speed;
 		
 	}
 	
 	public int getWidth() {
+		return Speed;
 		
 	}
 	
 	public int getHeight() {
+		return Speed;
 		
 	}
 	
@@ -59,7 +66,8 @@ public class Mobile {
 		
 	}
 	
-	public color getColor() {
+	public Color getColor() {
+		return null;
 		
 	}
 	
@@ -67,13 +75,11 @@ public class Mobile {
 		return null;
 	}
 	
-	public void setLorannModel(IModelLorann ModelLorann() {
+	public void setLorannModel (IModelLorann ModelLorann) {
 		
 	}
 	
-	public image getImage() {
+	public Image getImage() {
 		return null;
 	}
-	
-	
 }

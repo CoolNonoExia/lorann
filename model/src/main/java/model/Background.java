@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 public class Background {
 	
-	public Background(dimension Dimension) {
+	public Background(Dimension dimension) {
 		// TODO Auto-generated constructor stub
 	}
 

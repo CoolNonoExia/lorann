@@ -22,5 +22,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/contract"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/controller"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/main"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/showboard"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/view"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

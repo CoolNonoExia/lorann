@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 public class LorannModel {
 	
@@ -9,11 +10,12 @@ public class LorannModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public IArea getArea() {		
+	public IArea getArea() {
+		return null;		
 		
 	}
 	
-	public void getBuildArea(dimension Dimension) {		
+	public void getBuildArea(Dimension dimension) {		
 		
 	}
 	
@@ -29,7 +31,8 @@ public class LorannModel {
 		return null;
 	}
 	
-	public IMobile getMobileByPlayer(int player) {		
+	public IMobile getMobileByPlayer(int player) {
+		return null;		
 		
 	}
 	

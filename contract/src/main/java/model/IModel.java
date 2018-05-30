@@ -1,6 +1,8 @@
 package model;
 
+import java.awt.Dimension;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,5 +42,20 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
+
+    
+    /* Real code from here */
     List<Example> getAllExamples() throws SQLException;
+    
+    public IArea getArea();
+	
+	public void buildArea(Dimension dimension);
+	
+	public void addMobile(Mobile mobile);
+	
+	public void removeMobile(Mobile mobile);
+	
+	public ArrayList<Mobile> getMobiles();
+	
+	public void setMobilesHasMoved();
 }

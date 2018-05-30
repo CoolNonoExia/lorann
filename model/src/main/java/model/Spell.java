@@ -2,28 +2,12 @@ package model;
 
 import java.awt.Image;
 
-public class Spell {
-	private int Speed = 2;
-	private int Width = 1;
-	private int Height = 1;
-	private int Max_Distance_Traveled =30;
-	private String IMAGE="spell";
+public class Spell extends Mobile {
+	private static int SPEED = 2;
+	private static int WIDTH = 1;
+	private static int HEIGHT = 1;
 	
-	public Spell() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public void Background (Dimension dimension) {
-		
-	}
-	
-	public Dimension getDimension() {
-		return null;
-		
-	}
-	
-	public Image getImage() {
-		return null;
-		
+	public Spell(Direction direction, Position position, Dimension dimension, Image[] images) {
+		super(direction, position, dimension, SPEED, images);
 	}
 }

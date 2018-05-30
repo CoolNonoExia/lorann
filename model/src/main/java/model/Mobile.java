@@ -4,41 +4,43 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Point;
 
-public class Mobile {
-	private int Speed;
+public class Mobile extends Entity {
+	protected int speed;
+	protected Direction direction;
 	
-	public Mobile(Direction direction, Position position, Dimension dimension, int Speed, Image image) {
-		// TODO Auto-generated constructor stub
+	public Mobile(Direction direction, Position position, int Speed, Image[] images) {
+		super(position, images);
+		this.direction = direction;
 	}
 	
 	public Direction getDirection() {
-		return null;
+		return this.direction;
 	}
 	
 	public void setDirection(Direction direction) {
-		
+		this.direction = direction;
 	}
 	
-	public Point getPosition() {
-		return null;
+	public Position getPosition() {
+		return this.position;
 	}
 	
 	public Dimension getDimension() {
-		return null;
+		return this.DIMENSION;
 	}
 	
 	public int getSpeed() {
-		return Speed;
+		return this.speed;
 		
 	}
 	
 	public int getWidth() {
-		return Speed;
+		return this.DIMENSION.getWidth();
 		
 	}
 	
 	public int getHeight() {
-		return Speed;
+		return this.DIMENSION.getHeight();
 		
 	}
 	
@@ -66,20 +68,15 @@ public class Mobile {
 		
 	}
 	
-	public Color getColor() {
-		return null;
-		
+	public IModel getLorannModel() {
+		return this.model;
 	}
 	
-	public IModelLorann getLorannModel() {
-		return null;
+	public void setLorannModel (IModel model) {
+		this.model = model;
 	}
 	
-	public void setLorannModel (IModelLorann ModelLorann) {
-		
-	}
-	
-	public Image getImage() {
-		return null;
+	public Image[] getImage() {
+		return images;
 	}
 }

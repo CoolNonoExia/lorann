@@ -72,4 +72,24 @@ public class ControllerFacade implements IController {
     public IModel getModel() {
         return this.model;
     }
+    
+    
+    
+    /* REAL CODE STARTS HERE */
+    
+    public void orderPerform (UserOrder userOrder) {
+		
+	}
+    
+	public void play() {
+		
+	}
+	
+	public void pause() {
+		
+	}
+	
+	private void LauchSpell() {
+		
+	}
 }

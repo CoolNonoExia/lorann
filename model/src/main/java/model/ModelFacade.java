@@ -1,6 +1,8 @@
 package model;
 
+import java.awt.Dimension;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.dao.ExampleDAO;
@@ -47,4 +49,43 @@ public final class ModelFacade implements IModel {
         return ExampleDAO.getAllExamples();
     }
 
+    
+    
+    /* REAL CODE STARTS FROM HERE */
+    
+	@Override
+	public IArea getArea() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void buildArea(Dimension dimension) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addMobile(Mobile mobile) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeMobile(Mobile mobile) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<Mobile> getMobiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setMobilesHasMoved() {
+		// TODO Auto-generated method stub
+		
+	}
 }

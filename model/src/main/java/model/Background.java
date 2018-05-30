@@ -1,18 +1,21 @@
 package model;
 
 import java.awt.Dimension;
+import java.awt.Image;
 
-public class Background {
+public class Background implements IArea {
+	private Image image;
+	private Dimension dimension;
 	
 	public Background(Dimension dimension) {
-		// TODO Auto-generated constructor stub
+		this.dimension = dimension;
 	}
 
-	public Dimension getBackground() {
-		return Background;
+	public Dimension getDimension() {
+		return dimension;
 	}
 	
-	public Dimension getImage() {
-		return Image;
+	public Image getImage() {
+		return image;
 	}
 }

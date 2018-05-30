@@ -1,13 +1,13 @@
 package model;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order.Direction;
+import java.awt.Image;
 
-public class Player {
-	private int SPEED =4;
-	private int Width=2;
-	private int Height=2;
+public class Player extends Mobile {
+	private static int SPEED = 4;
+	private static int WIDTH = 2;
+	private static int HEIGHT = 2;
 	
-	public Player(int player, Direction direction, Position position, String image) {
-		// TODO Auto-generated constructor stub
+	public Player(Direction direction, Position position, Image[] images) {
+		super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, images);
 	}
 }

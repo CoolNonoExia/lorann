@@ -3,16 +3,18 @@ package view;
 import java.awt.event.KeyEvent;
 
 import controller.ControllerFacade;
-import controller.UserOrder;
+import controller.Order;
 
 public class EventPerformer {
+	private ControllerFacade orderPerformer;
+	
 	public EventPerformer(ControllerFacade orderPerformer) {
-		
+		this.orderPerformer = orderPerformer;
 	}
 	public void eventPerform(KeyEvent KeyCode) {
 		
 	}
-	private UserOrder keyCodeToUserOrder(int KeyCode) {
+	private Order keyCodeToOrder(int KeyCode) {
 		return null;
 	}
 

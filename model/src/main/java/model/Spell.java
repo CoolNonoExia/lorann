@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Dimension;
 import java.awt.Image;
 
 public class Spell extends Mobile {

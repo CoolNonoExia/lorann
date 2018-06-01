@@ -2,6 +2,8 @@ package showboard;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Observer;
 
 import javax.swing.JFrame;
@@ -25,7 +27,7 @@ import javax.swing.JFrame;
  * @see ISquare
  * @see IPawn
  */
-public class BoardFrame extends JFrame implements IBoard {
+public class BoardFrame extends JFrame implements IBoard, KeyListener {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6563585351564617603L;
@@ -35,7 +37,7 @@ public class BoardFrame extends JFrame implements IBoard {
 
     /** The board panel. */
     private final BoardPanel  boardPanel;
-
+    
     /**
      * Instantiates a new board frame.
      *
@@ -193,4 +195,22 @@ public class BoardFrame extends JFrame implements IBoard {
     public final void setHeightLooped(final Boolean heightLooped) {
         this.getBoardPanel().setHeightLooped(heightLooped);
     }
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

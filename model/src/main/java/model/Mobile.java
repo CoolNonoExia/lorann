@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 
@@ -35,12 +36,12 @@ public class Mobile extends Entity {
 	}
 	
 	public int getWidth() {
-		return this.DIMENSION.getWidth();
+		return (int)this.DIMENSION.getWidth();
 		
 	}
 	
 	public int getHeight() {
-		return this.DIMENSION.getHeight();
+		return (int)this.DIMENSION.getHeight();
 		
 	}
 	

@@ -1,11 +1,10 @@
 package model;
 
-import java.awt.Dimension;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.dao.ExampleDAO;
+import model.dao.LevelDAO;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
@@ -42,53 +41,38 @@ public final class ModelFacade implements IModel {
 
     /*
      * (non-Javadoc)
-     * @see model.IModel#getAllExamples()
+     * @see model.IModel#getLevel1()
      */
     @Override
     public List<Example> getAllExamples() throws SQLException {
         return ExampleDAO.getAllExamples();
     }
     
+    @Override
+    public List<Level> getLevel1() throws SQLException {
+        return LevelDAO.getLevel1();
+    }
+    
+    @Override
+    public List<Level> getLevel2() throws SQLException {
+        return LevelDAO.getLevel2();
+    }
+    
+    @Override
+    public List<Level> getLevel3() throws SQLException {
+        return LevelDAO.getLevel3();
+    }
+    
+    @Override
+    public List<Level> getLevel4() throws SQLException {
+        return LevelDAO.getLevel4();
+    }
+    
+    @Override
+    public List<Level> getLevel5() throws SQLException {
+        return LevelDAO.getLevel5();
+    }
     
     
-    
-    /* REAL CODE STARTS FROM HERE */
 
-	@Override
-	public IArea getArea() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void buildArea(Dimension dimension) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addEntity(IEntity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeEntity(IEntity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList<IEntity> getEntities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setMobileHasMoved() {
-		// TODO Auto-generated method stub
-		
-	}
-    
-	
 }

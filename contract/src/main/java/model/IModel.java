@@ -1,16 +1,9 @@
 package model;
 
-import java.awt.Dimension;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <h1>The Interface IModel.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
+
 public interface IModel {
 
     /**
@@ -38,24 +31,19 @@ public interface IModel {
     /**
      * Gets the all examples.
      *
-     * @return the all examples
+     * @return the all examples + Level1+...
      * @throws SQLException
      *             the SQL exception
      */
-
-    
-    /* Real code from here */
     List<Example> getAllExamples() throws SQLException;
     
-    public IArea getArea();
-	
-	public void buildArea(Dimension dimension);
-	
-	public void addEntity(IEntity entity);
-	
-	public void removeEntity(IEntity entity);
-	
-	public ArrayList<IEntity> getEntities();
-	
-	public void setMobileHasMoved();
+    List<Level> getLevel1() throws SQLException;
+
+    List<Level> getLevel2() throws SQLException;
+    
+    List<Level> getLevel3() throws SQLException;
+    
+    List<Level> getLevel4() throws SQLException;
+    
+    List<Level> getLevel5() throws SQLException;
 }

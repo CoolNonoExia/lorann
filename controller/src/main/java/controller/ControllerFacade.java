@@ -5,7 +5,9 @@ import java.util.List;
 
 import model.Example;
 import model.IModel;
+import model.Level;
 import view.IView;
+
 
 /**
  * <h1>The Class ControllerFacade provides a facade of the Controller component.</h1>
@@ -53,6 +55,21 @@ public class ControllerFacade implements IController {
             message.append('\n');
         }
         this.getView().displayMessage(message.toString());
+        final List<Level> level1 = this.getModel().getLevel1();
+        for (int i=0; i<level1.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level1.get(i).getList());
+       
+        //final List<Level> level2 = this.getModel().getLevel2();
+        //for (int i=0; i<level2.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level2.get(i).getList());
+        
+        //final List<Level> level3 = this.getModel().getLevel3();
+        //for (int i=0; i<level3.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level3.get(i).getList());
+       
+        //final List<Level> level4 = this.getModel().getLevel4();
+        //for (int i=0; i<level4.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level4.get(i).getList());
+        
+        //final List<Level> level5 = this.getModel().getLevel5();
+        //for (int i=0; i<level5.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level5.get(i).getList());
+
     }
 
     /**
@@ -72,24 +89,4 @@ public class ControllerFacade implements IController {
     public IModel getModel() {
         return this.model;
     }
-    
-    
-    
-    /* REAL CODE STARTS HERE */
-    
-    public void orderPerform (Order order) {
-		
-	}
-    
-	public void play() {
-		
-	}
-	
-	public void pause() {
-		
-	}
-	
-	private void LauchSpell() {
-		
-	}
 }

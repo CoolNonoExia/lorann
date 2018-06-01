@@ -9,9 +9,12 @@ public class Mobile extends Entity {
 	protected int speed;
 	protected Direction direction;
 	
-	public Mobile(Direction direction, Position position, int Speed, Image[] images) {
+	public Mobile(Direction direction, Position position, int speed, Image[] images) {
 		super(position, images);
 		this.direction = direction;
+		this.speed = speed;
+		this.position = position;
+		this.images = images;
 	}
 	
 	public Direction getDirection() {

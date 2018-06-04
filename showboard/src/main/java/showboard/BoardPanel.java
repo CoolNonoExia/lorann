@@ -78,12 +78,17 @@ class BoardPanel extends JPanel implements Observer {
 
     /** The height looped. */
     private Boolean             heightLooped     = false;
+    
+    /** The sprite animation loop */
+    private int i;
+
 
     /**
      * Instantiates a new board panel.
      */
     BoardPanel() {
         super();
+        this.i = 0;
         this.pawns = new ArrayList<>();
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         final Graphics2D graphics = this.noImage.createGraphics();
@@ -167,7 +172,7 @@ class BoardPanel extends JPanel implements Observer {
         if ((realX < 0) || (realY < 0) || (realX >= widthLimit) || (realY >= heightLimit)) {
             image = this.noImage;
         } else {
-            image = this.squares[realX][realY].getImage();
+            image = this.squares[realX][realY].getImage()[0];
             if (image == null) {
                 image = this.noImage;
             }
@@ -360,9 +365,16 @@ class BoardPanel extends JPanel implements Observer {
         final List<IPawn> listPawn = mapPawn.get(this.createMapPawnKey(this.calculateRealX(x), this.calculateRealY(y)));
         if (listPawn != null) {
             for (final IPawn pawn : listPawn) {
-                graphics.drawImage(pawn.getImage(), this.getSquareSizeWidth() * (x - this.getCornerMinX()),
-                        this.getSquareSizeHeight() * (y - this.getCornerMinY()), this.getSquareSizeWidth(),
-                        this.getSquareSizeHeight(), this);
+            	graphics.drawImage(pawn.getImage()[i], this.getSquareSizeWidth() * (x - this.getCornerMinX()),
+        				this.getSquareSizeHeight() * (y - this.getCornerMinY()), this.getSquareSizeWidth(),
+        				this.getSquareSizeHeight(), this);
+            	
+            	if(pawn.getNbrImages() > 1)
+            	{
+            		i++;
+            		if(i == pawn.getNbrImages())
+            			i = 0;
+            	}
             }
         }
     }

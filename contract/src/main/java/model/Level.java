@@ -1,21 +1,22 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Level {
 
-private int list;
+private ArrayList<Integer> line;
 
-    public Level(int A) {
+    public Level() {
         super();
-        this.list=A;
+        this.line = new ArrayList<>();
+    }
     
+    public void add(int n) {
+    	this.line.add(n);
     }
 
-    public int getList() {
-		return list;
-	}
-    
-    public void setList(int list) {
-		this.list = list;
+	public ArrayList<Integer> getLine() {
+		return line;
 	}
    
 }

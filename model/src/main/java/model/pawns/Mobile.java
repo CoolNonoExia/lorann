@@ -1,13 +1,19 @@
-package model;
+package model.pawns;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 
-public class Mobile extends Entity {
+import model.Direction;
+import model.Entity;
+import model.IModel;
+import model.Position;
+import showboard.IPawn;
+
+public /*abstract*/ class Mobile extends Entity implements IPawn {
 	protected int speed;
 	protected Direction direction;
+	protected int nbrImages;
 	
 	public Mobile(Direction direction, Position position, int speed, Image[] images) {
 		super(position, images);
@@ -15,6 +21,7 @@ public class Mobile extends Entity {
 		this.speed = speed;
 		this.position = position;
 		this.images = images;
+		this.nbrImages = 1;
 	}
 	
 	public Direction getDirection() {
@@ -25,12 +32,8 @@ public class Mobile extends Entity {
 		this.direction = direction;
 	}
 	
-	public Position getPosition() {
-		return this.position;
-	}
-	
 	public Dimension getDimension() {
-		return this.DIMENSION;
+		return dimension;
 	}
 	
 	public int getSpeed() {
@@ -39,20 +42,16 @@ public class Mobile extends Entity {
 	}
 	
 	public int getWidth() {
-		return (int)this.DIMENSION.getWidth();
+		return (int)this.dimension.getWidth();
 		
 	}
 	
 	public int getHeight() {
-		return (int)this.DIMENSION.getHeight();
+		return (int)this.dimension.getHeight();
 		
 	}
 	
 	public void move() {
-		
-	}
-	
-	public void placeInArea(IArea area) {
 		
 	}
 	
@@ -79,8 +78,29 @@ public class Mobile extends Entity {
 	public void setLorannModel (IModel model) {
 		this.model = model;
 	}
-	
+
+	@Override
 	public Image[] getImage() {
 		return images;
+	}
+
+	@Override
+	public int getX() {
+		return (int) position.getX();
+	}
+
+	@Override
+	public int getY() {
+		return (int) position.getY();
+	}
+
+	@Override
+	public Point getPosition() {
+		return new Point((int)position.getX(), (int)position.getY());
+	}
+
+	@Override
+	public int getNbrImages() {
+		return nbrImages;
 	}
 }

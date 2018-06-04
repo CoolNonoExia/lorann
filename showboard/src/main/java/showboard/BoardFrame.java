@@ -33,10 +33,13 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
     private static final long serialVersionUID = -6563585351564617603L;
 
     /** The initial frame size. */
-    private static final int  defaultFrameSize = 700;
+    private static final int  defaultFrameSize = 808;
 
     /** The board panel. */
     private final BoardPanel  boardPanel;
+    
+    
+    private IEventPerformer eventPerformer;
     
     /**
      * Instantiates a new board frame.
@@ -197,19 +200,18 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
     }
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent key) {
+		eventPerformer.eventPerform(key);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent key) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(KeyEvent key) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,8 +2,10 @@ package view;
 
 import javax.swing.JOptionPane;
 
-public class ViewFacade implements IView {
+import model.IModel;
 
+public class ViewFacade implements IView {
+	
     public ViewFacade() {
         super();
     }
@@ -12,6 +14,4 @@ public class ViewFacade implements IView {
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }
-
-    
 }

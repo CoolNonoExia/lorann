@@ -1,5 +1,6 @@
 package showboard;
 
+import java.awt.Image;
 import java.awt.Point;
 
 /**
@@ -31,10 +32,19 @@ public interface IPawn extends ISquare {
     int getY();
 
     /**
+     * Gets the number of sprites for this pawn.
+     *
+     * @return the nbrImages
+     */
+    int getNbrImages();
+    
+    /**
      * Gets the position Point(int x, int y).
      *
      * @return the position
      * @see Point
      */
     Point getPosition();
+    
+    Image[] getImage();
 }

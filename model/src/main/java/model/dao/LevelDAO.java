@@ -48,91 +48,81 @@ public abstract class LevelDAO extends AbstractDAO {
         final CallableStatement callStatement = prepareCall(sqlLoad1);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
-            
             while(result.next()) {
-            	
-            for (int i=1; i<=26;i++) {
-            	
-                level1.add(new Level((int) result.getObject(i)));
-   
+            	Level level = new Level();
+            	level1.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
             }
-         }
             result.close();
         }
         return level1;
     }
     
     public static List<Level> getLevel2() throws SQLException {
-        final ArrayList<Level> level2 = new ArrayList<Level>();
-        final CallableStatement callStatement = prepareCall(sqlLoad1);
+    	final ArrayList<Level> level2 = new ArrayList<Level>();
+        final CallableStatement callStatement = prepareCall(sqlLoad2);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
-
             while(result.next()) {
-            	
-                for (int i=1; i<=26;i++) {
-                	
-                    level2.add(new Level((int) result.getObject(i)));
-
-                }
-             }
+            	Level level = new Level();
+            	level2.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
+            }
                 result.close();
         }
         return level2;
     }
     
     public static List<Level> getLevel3() throws SQLException {
-        final ArrayList<Level> level3 = new ArrayList<Level>();
-        final CallableStatement callStatement = prepareCall(sqlLoad1);
+    	final ArrayList<Level> level3 = new ArrayList<Level>();
+        final CallableStatement callStatement = prepareCall(sqlLoad3);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
-
             while(result.next()) {
-            	
-                for (int i=1; i<=26;i++) {
-                	
-                    level3.add(new Level((int) result.getObject(i)));
-
-                }
-             }
+            	Level level = new Level();
+            	level3.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
+            }
                 result.close();
         }
         return level3;
     }
     
     public static List<Level> getLevel4() throws SQLException {
-        final ArrayList<Level> level4 = new ArrayList<Level>();
-        final CallableStatement callStatement = prepareCall(sqlLoad1);
+    	final ArrayList<Level> level4 = new ArrayList<Level>();
+        final CallableStatement callStatement = prepareCall(sqlLoad4);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
-
             while(result.next()) {
-            	
-                for (int i=1; i<=26;i++) {
-                	
-                    level4.add(new Level((int) result.getObject(i)));
-
-                }
-             }
+            	Level level = new Level();
+            	level4.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
+            }
                 result.close();
         }
         return level4;
     }
     
     public static List<Level> getLevel5() throws SQLException {
-        final ArrayList<Level> level5 = new ArrayList<Level>();
-        final CallableStatement callStatement = prepareCall(sqlLoad1);
+    	final ArrayList<Level> level5 = new ArrayList<Level>();
+        final CallableStatement callStatement = prepareCall(sqlLoad5);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
-
             while(result.next()) {
-            	
-                for (int i=1; i<=26;i++) {
-                	
-                    level5.add(new Level((int) result.getObject(i)));
-                   
-                }
-             }
+            	Level level = new Level();
+            	level5.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
+            }
                 result.close();
         }
         return level5;

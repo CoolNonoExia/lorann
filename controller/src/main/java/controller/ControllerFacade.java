@@ -56,20 +56,24 @@ public class ControllerFacade implements IController {
         }
         this.getView().displayMessage(message.toString());
         final List<Level> level1 = this.getModel().getLevel1();
-        for (int i=0; i<level1.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level1.get(i).getList());
+        for (int i=0; i<level1.size();i++) {
+        	for (int j = 0; j<level1.get(i).getLine().size(); j++)
+        	System.out.println("j'ai bouclé : " + i + " et " + j +" avec la valeur : " + level1.get(i).getLine().get(j));
+        }
        
-        //final List<Level> level2 = this.getModel().getLevel2();
-        //for (int i=0; i<level2.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level2.get(i).getList());
+        /**
+        final List<Level> level2 = this.getModel().getLevel2();
+        for (int i=0; i<level2.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level2.get(i).getList());
         
-        //final List<Level> level3 = this.getModel().getLevel3();
-        //for (int i=0; i<level3.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level3.get(i).getList());
+        final List<Level> level3 = this.getModel().getLevel3();
+        for (int i=0; i<level3.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level3.get(i).getList());
        
-        //final List<Level> level4 = this.getModel().getLevel4();
-        //for (int i=0; i<level4.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level4.get(i).getList());
+        final List<Level> level4 = this.getModel().getLevel4();
+        for (int i=0; i<level4.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level4.get(i).getList());
         
-        //final List<Level> level5 = this.getModel().getLevel5();
-        //for (int i=0; i<level5.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level5.get(i).getList());
-
+        final List<Level> level5 = this.getModel().getLevel5();
+        for (int i=0; i<level5.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level5.get(i).getList());
+		*/
     }
 
     /**
@@ -88,5 +92,11 @@ public class ControllerFacade implements IController {
      */
     public IModel getModel() {
         return this.model;
+    }
+    
+    public void orderPerform(Order order) {
+    	// TODO
+    	// this.getModel().move(order);
+    	
     }
 }

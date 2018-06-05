@@ -26,7 +26,7 @@ public class MobileTest {
 
 	@Before
 	public void setUp() throws Exception {
-		position = new Position(20, 25, 52, 57);
+		position = new Position(20, 25);
 		mobile = new Mobile(Direction.RIGHT, position, 3, new Image[3]);
 	}
 

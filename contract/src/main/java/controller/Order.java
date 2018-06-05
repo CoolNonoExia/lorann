@@ -6,6 +6,6 @@ public enum Order {
 	DOWN,
 	LEFT,
 	SPELL,
+	ESCAPE,
 	NOPE
-
 }

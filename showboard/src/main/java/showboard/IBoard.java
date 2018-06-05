@@ -57,12 +57,4 @@ public interface IBoard {
      * @return the dimension
      */
     Dimension getDimension();
-
-    /**
-     * Sets the display frame.
-     *
-     * @param displayFrame
-     *            the new display frame
-     */
-    void setDisplayFrame(Rectangle displayFrame);
 }

@@ -14,9 +14,10 @@ public /*abstract*/ class Mobile extends Entity implements IPawn {
 	protected int speed;
 	protected Direction direction;
 	protected int nbrImages;
+	protected Position position;
 	
 	public Mobile(Direction direction, Position position, int speed, Image[] images) {
-		super(position, images);
+		super(images);
 		this.direction = direction;
 		this.speed = speed;
 		this.position = position;
@@ -69,14 +70,6 @@ public /*abstract*/ class Mobile extends Entity implements IPawn {
 	
 	public void moveLeft() {
 		
-	}
-	
-	public IModel getLorannModel() {
-		return this.model;
-	}
-	
-	public void setLorannModel (IModel model) {
-		this.model = model;
 	}
 
 	@Override

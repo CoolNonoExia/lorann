@@ -1,20 +1,18 @@
-package view;
+package controller;
 
 import java.awt.event.KeyEvent;
 
-import controller.ControllerFacade;
-import controller.Order;
-import showboard.IEventPerformer;
-
-public class EventPerformer implements IEventPerformer {
+public class EventPerformer {
 	private ControllerFacade orderPerformer;
 	
 	public EventPerformer(ControllerFacade orderPerformer) {
 		this.orderPerformer = orderPerformer;
 	}
+	
 	public void eventPerform(KeyEvent keyEvent) {
-		orderPerformer.orderPerform(keyCodeToOrder(keyEvent.getKeyCode()));
+		this.orderPerformer.orderPerform(this.keyCodeToOrder(keyEvent.getKeyCode()));
 	}
+	
 	private Order keyCodeToOrder(int keyCode) {
 		switch(keyCode) {
 		case KeyEvent.VK_UP:
@@ -27,6 +25,8 @@ public class EventPerformer implements IEventPerformer {
 			return Order.RIGHT;
 		case KeyEvent.VK_SPACE:
 			return Order.SPELL;
+		case KeyEvent.VK_ESCAPE:
+			return Order.ESCAPE;
 		default:
 			return Order.NOPE;
 		}

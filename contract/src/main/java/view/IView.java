@@ -1,5 +1,11 @@
 package view;
 
+import java.awt.event.KeyListener;
+import java.util.List;
+
+import model.Level;
+import showboard.BoardFrame;
+
 /**
  * <h1>The Interface IView.</h1>
  *
@@ -15,4 +21,8 @@ public interface IView {
      *            the message
      */
     void displayMessage(String message);
+
+	BoardFrame getGameFrame();
+
+	void setLevel(KeyListener controller, List<Level> level);
 }

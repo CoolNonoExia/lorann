@@ -2,11 +2,15 @@ package showboard;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+
+import showboard.squares.*;
+import showboard.squares.Void;
+
 
 /**
  * <h1>The Class BoardFrame.</h1>
@@ -27,20 +31,14 @@ import javax.swing.JFrame;
  * @see ISquare
  * @see IPawn
  */
-public class BoardFrame extends JFrame implements IBoard, KeyListener {
+public class BoardFrame extends JFrame implements IBoard {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6563585351564617603L;
 
-    /** The initial frame size. */
-    private static final int  defaultFrameSize = 808;
-
     /** The board panel. */
     private final BoardPanel  boardPanel;
-    
-    
-    private IEventPerformer eventPerformer;
-    
+
     /**
      * Instantiates a new board frame.
      *
@@ -49,17 +47,22 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
      * @param decorated
      *            the decorated
      */
-    public BoardFrame(final String title, final Boolean decorated) {
+    public BoardFrame(final String title, final Boolean decorated, final KeyListener controller, int[][] tab) {
         super();
         this.setTitle(title);
-        this.setSize(defaultFrameSize, defaultFrameSize);
+        this.setSize(850, 784+24);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setUndecorated(decorated);
         this.boardPanel = new BoardPanel();
+        
         this.setContentPane(this.boardPanel);
+        this.setDimension(new Dimension(tab[0].length, tab.length));
+        this.setSquares(tab);
+        
         this.setResizable(false);
         this.setVisible(true);
+        this.addKeyListener(controller);
     }
 
     /**
@@ -68,15 +71,15 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
      * @param title
      *            the title
      */
-    public BoardFrame(final String title) {
-        this(title, false);
+    public BoardFrame(final String title, final KeyListener controller, int[][] tab) {
+        this(title, false, controller, tab);
     }
 
     /**
      * Instantiates a new board frame.
      */
-    public BoardFrame() {
-        this("", false);
+    public BoardFrame(final KeyListener controller, int[][] tab) {
+        this("", false, controller, tab);
     }
 
     /**
@@ -85,10 +88,53 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
      * @param decorated
      *            the decorated
      */
-    public BoardFrame(final Boolean decorated) {
-        this("", decorated);
+    public BoardFrame(final Boolean decorated, final KeyListener controller, int[][] tab) {
+        this("", decorated, controller, tab);
     }
-
+    
+    public void setSquares(int[][] tab) {
+    	try {
+			for (int i = 0; i < tab.length; i++) {
+	        	for (int j = 0; j < tab[i].length; j++) {
+	        		switch(tab[i][j]) {
+	        		case 0:
+	        			this.addSquare(new Bone(), j, i);
+	        			break;
+	        		case 1:
+	        			this.addSquare(new BoneH(), j, i);
+	        			break;
+	        		case 2:
+	        			this.addSquare(new BoneV(), j, i);
+	        			break;
+	        		case 3:
+	        			this.addSquare(new Void(), j, i);
+	        			break;
+	        		case 4:
+	        			this.addSquare(new GateO(), j, i);
+	        			break;
+	        		case 5:
+	        			this.addSquare(new Void(), j, i);
+	        			break;
+	        		case 6:
+	        			this.addSquare(new GateC(), j, i);
+	        			break;
+	        		case 7:
+	        			this.addSquare(new Purse(), j, i);
+	        			break;
+	        		case 8:
+	        			this.addSquare(new CrystalBall(), j, i);
+	        			break;
+	        		default:
+	        			this.addSquare(new Void(), j, i);
+	        			break;
+	        		}
+	        	}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
     /*
      * (non-Javadoc)
      * @see fr.exia.showboard.IBoard#addSquare(fr.exia.showboard.ISquare, int, int)
@@ -135,24 +181,6 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
     }
 
     /**
-     * Gets the display frame.
-     *
-     * @return the display frame
-     */
-    public final Rectangle getDisplayFrame() {
-        return this.getBoardPanel().getDisplayFrame();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.showboard.IBoard#setDisplayFrame(java.awt.Rectangle)
-     */
-    @Override
-    public final void setDisplayFrame(final Rectangle displayFrame) {
-        this.getBoardPanel().setDisplayFrame(displayFrame);
-    }
-
-    /**
      * Gets the board panel.
      *
      * @return the board panel
@@ -160,59 +188,4 @@ public class BoardFrame extends JFrame implements IBoard, KeyListener {
     private BoardPanel getBoardPanel() {
         return this.boardPanel;
     }
-
-    /**
-     * Checks if is width looped.
-     *
-     * @return the boolean
-     */
-    public final Boolean isWidthLooped() {
-        return this.getBoardPanel().isWidthLooped();
-    }
-
-    /**
-     * Sets the width looped.
-     *
-     * @param widthLooped
-     *            the new width looped
-     */
-    public final void setWidthLooped(final Boolean widthLooped) {
-        this.getBoardPanel().setWidthLooped(widthLooped);
-    }
-
-    /**
-     * Checks if is height looped.
-     *
-     * @return the boolean
-     */
-    public final Boolean isHeightLooped() {
-        return this.getBoardPanel().isHeightLooped();
-    }
-
-    /**
-     * Sets the height looped.
-     *
-     * @param heightLooped
-     *            the new height looped
-     */
-    public final void setHeightLooped(final Boolean heightLooped) {
-        this.getBoardPanel().setHeightLooped(heightLooped);
-    }
-
-	@Override
-	public void keyPressed(KeyEvent key) {
-		eventPerformer.eventPerform(key);
-	}
-
-	@Override
-	public void keyReleased(KeyEvent key) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent key) {
-		// TODO Auto-generated method stub
-		
-	}
 }

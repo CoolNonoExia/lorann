@@ -1,9 +1,10 @@
 package controller;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Example;
 import model.IModel;
 import model.Level;
 import view.IView;
@@ -15,13 +16,15 @@ import view.IView;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ControllerFacade implements IController {
+public class ControllerFacade implements IController, KeyListener {
 
     /** The view. */
     private final IView  view;
 
     /** The model. */
     private final IModel model;
+    
+    private final EventPerformer eventPerformer;
 
     /**
      * Instantiates a new controller facade.
@@ -32,9 +35,9 @@ public class ControllerFacade implements IController {
      *            the model
      */
     public ControllerFacade(final IView view, final IModel model) {
-        super();
         this.view = view;
         this.model = model;
+        this.eventPerformer = new EventPerformer(this);
     }
 
     /**
@@ -44,36 +47,16 @@ public class ControllerFacade implements IController {
      *             the SQL exception
      */
     public void start() throws SQLException {
-        this.getView().displayMessage(this.getModel().getExampleById(1).toString());
-
-        this.getView().displayMessage(this.getModel().getExampleByName("Example 2").toString());
-
-        final List<Example> examples = this.getModel().getAllExamples();
-        final StringBuilder message = new StringBuilder();
-        for (final Example example : examples) {
-            message.append(example);
-            message.append('\n');
-        }
-        this.getView().displayMessage(message.toString());
         final List<Level> level1 = this.getModel().getLevel1();
-        for (int i=0; i<level1.size();i++) {
-        	for (int j = 0; j<level1.get(i).getLine().size(); j++)
-        	System.out.println("j'ai bouclé : " + i + " et " + j +" avec la valeur : " + level1.get(i).getLine().get(j));
-        }
-       
-        /**
-        final List<Level> level2 = this.getModel().getLevel2();
-        for (int i=0; i<level2.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level2.get(i).getList());
         
-        final List<Level> level3 = this.getModel().getLevel3();
-        for (int i=0; i<level3.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level3.get(i).getList());
-       
-        final List<Level> level4 = this.getModel().getLevel4();
-        for (int i=0; i<level4.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level4.get(i).getList());
+//        for (int i=0; i<level1.size(); i++) {
+//        	for (int j = 0; j<level1.get(i).getLine().size(); j++)
+//        	System.out.println("j'ai bouclé : " + i + " et " + j +" avec la valeur : " + level1.get(i).getLine().get(j));
+//        }
         
-        final List<Level> level5 = this.getModel().getLevel5();
-        for (int i=0; i<level5.size();i++) System.out.println("j'ai bouclé : " + i +" avec la valeur : " + level5.get(i).getList());
-		*/
+        this.getView().setLevel(this, level1);
+        
+        this.mainLoop();
     }
 
     /**
@@ -94,9 +77,43 @@ public class ControllerFacade implements IController {
         return this.model;
     }
     
-    public void orderPerform(Order order) {
-    	// TODO
-    	// this.getModel().move(order);
-    	
+    public EventPerformer getEventPerformer() {
+    	return this.eventPerformer;
     }
+    
+    public void orderPerform(Order order) {
+    	if (order != Order.NOPE) {
+    		if (order == Order.SPELL) {
+    			this.launchSpell();
+    		} else {
+    			this.getModel().move(order);
+    		}
+    	}
+    }
+    
+    public void launchSpell() {
+    	// TODO
+    }
+
+    public void mainLoop() {
+    	while(true) {
+    		// TODO
+    		this.getView().getGameFrame().repaint();
+    	}
+    }
+
+	@Override
+	public void keyPressed(KeyEvent key) {
+		this.getEventPerformer().eventPerform(key);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent key) {
+		// NOTHING
+	}
+
+	@Override
+	public void keyTyped(KeyEvent key) {
+		// NOTHING
+	}
 }

@@ -1,9 +1,11 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import controller.Order;
+import showboard.IPawn;
 
 
 public interface IModel {
@@ -19,4 +21,6 @@ public interface IModel {
     List<Level> getLevel5() throws SQLException;
     
     void move(Order order);
+
+	ArrayList<IPawn> setPawns(List<Level> level);
 }

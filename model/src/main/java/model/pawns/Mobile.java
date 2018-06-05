@@ -5,23 +5,20 @@ import java.awt.Image;
 import java.awt.Point;
 
 import model.Direction;
-import model.Entity;
-import model.IModel;
-import model.Position;
 import showboard.IPawn;
 
-public /*abstract*/ class Mobile extends Entity implements IPawn {
-	protected int speed;
+public abstract class Mobile implements IPawn {
 	protected Direction direction;
 	protected int nbrImages;
-	protected Position position;
+	protected Point position;
+	protected Dimension dimension;
+	protected Image[] images;
 	
-	public Mobile(Direction direction, Position position, int speed, Image[] images) {
-		super(images);
+	public Mobile(Direction direction, Point position, Image[] images) {
 		this.direction = direction;
-		this.speed = speed;
 		this.position = position;
 		this.images = images;
+		this.dimension = new Dimension(32, 32);
 		this.nbrImages = 1;
 	}
 	
@@ -35,11 +32,6 @@ public /*abstract*/ class Mobile extends Entity implements IPawn {
 	
 	public Dimension getDimension() {
 		return dimension;
-	}
-	
-	public int getSpeed() {
-		return this.speed;
-		
 	}
 	
 	public int getWidth() {
@@ -89,7 +81,7 @@ public /*abstract*/ class Mobile extends Entity implements IPawn {
 
 	@Override
 	public Point getPosition() {
-		return new Point((int)position.getX(), (int)position.getY());
+		return position;
 	}
 
 	@Override

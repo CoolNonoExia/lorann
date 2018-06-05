@@ -2,6 +2,7 @@ package showboard;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.util.List;
 import java.util.Observer;
 
 /**
@@ -35,6 +36,7 @@ public interface IBoard {
      *            the pawn
      */
     void addPawn(IPawn pawn);
+    void addPawns(List<IPawn> pawns);
 
     /**
      * Gets the observer.

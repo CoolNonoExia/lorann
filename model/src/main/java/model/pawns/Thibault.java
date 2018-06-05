@@ -1,20 +1,21 @@
 package model.pawns;
 
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import model.Direction;
-import model.Position;
 
 public class Thibault extends Mobile {
-	private static int SPEED = 2;
 	
-	public Thibault(Direction direction, Position position) throws IOException {
-		super(direction, position, SPEED, new Image[] {ImageIO.read(new File("sprite/thibault.png")),
-													   ImageIO.read(new File("sprite/thibault_mouth.png"))});
+	public Thibault(Direction direction, Point position) throws IOException {
+		super(direction, position, new Image[] {ImageIO.read(new File("../sprites/thibault.png")),
+												ImageIO.read(new File("../sprites/thibault_mouth.png"))});
 		this.nbrImages = 2;
+		this.dimension = new Dimension(96, 161);
 	}
 }

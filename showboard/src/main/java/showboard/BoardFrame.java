@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.List;
 import java.util.Observer;
 
 import javax.swing.JFrame;
@@ -50,7 +51,7 @@ public class BoardFrame extends JFrame implements IBoard {
     public BoardFrame(final String title, final Boolean decorated, final KeyListener controller, int[][] tab) {
         super();
         this.setTitle(title);
-        this.setSize(850, 784+24);
+        this.setSize(850, 808);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setUndecorated(decorated);
@@ -106,14 +107,8 @@ public class BoardFrame extends JFrame implements IBoard {
 	        		case 2:
 	        			this.addSquare(new BoneV(), j, i);
 	        			break;
-	        		case 3:
-	        			this.addSquare(new Void(), j, i);
-	        			break;
 	        		case 4:
 	        			this.addSquare(new GateO(), j, i);
-	        			break;
-	        		case 5:
-	        			this.addSquare(new Void(), j, i);
 	        			break;
 	        		case 6:
 	        			this.addSquare(new GateC(), j, i);
@@ -151,6 +146,10 @@ public class BoardFrame extends JFrame implements IBoard {
     @Override
     public final void addPawn(final IPawn pawn) {
         this.getBoardPanel().addPawn(pawn);
+    }
+    @Override
+    public final void addPawns(final List<IPawn> pawns) {
+        this.getBoardPanel().addPawns(pawns);
     }
 
     /*

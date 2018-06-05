@@ -107,7 +107,7 @@ class BoardPanel extends JPanel implements Observer {
     	for (int x = 0; x <= this.getWidth()/32; x++) {
     		for (int y = 0; y <= this.getHeight()/32; y++) {
     			this.drawSquareXY(graphics, x, y);
-    			//this.drawPawnsXY(graphics, x, y);
+    			this.drawPawnsXY(graphics);
     		}
     	}
     }
@@ -143,6 +143,9 @@ class BoardPanel extends JPanel implements Observer {
      */
     public final void addPawn(final IPawn pawn) {
         this.getPawns().add(pawn);
+    }
+    public final void addPawns(final List<IPawn> pawns) {
+        this.getPawns().addAll(pawns);
     }
 
     /**
@@ -229,15 +232,16 @@ class BoardPanel extends JPanel implements Observer {
      * @param y
      *            the y
      */
-    private void drawPawnsXY(final Graphics graphics, final int x, final int y) {
-        for (int i = 0; i < this.getPawns().size(); i++) {
-            graphics.drawImage(this.getPawns().get(i).getImage()[a], 32 * x, 32 * y, 32, 32, this);
-            
+    private void drawPawnsXY(final Graphics graphics) {
+        for (int i = 0; i < this.getPawns().size(); i++) {    
             if(this.getPawns().get(i).getNbrImages() > 1)
             {
+            	graphics.drawImage(this.getPawns().get(i).getImage()[a], this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, 32, 32, this);
             	a++;
-            	if(a == this.getPawns().get(i).getNbrImages())
+            	if(a >= this.getPawns().get(i).getNbrImages()-1)
             		a = 0;
+            } else {
+            	graphics.drawImage(this.getPawns().get(i).getImage()[0], this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, 32, 32, this);
             }
         }
     }

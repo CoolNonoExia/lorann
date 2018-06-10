@@ -238,7 +238,7 @@ class BoardPanel extends JPanel implements Observer {
      */
     private void drawPawnsXY(final Graphics graphics) {
         for (int i = 0; i < this.getPawns().size(); i++) {    
-            graphics.drawImage(this.getPawns().get(i).getImage(), this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, 32, 32, this);
+            graphics.drawImage(this.getPawns().get(i).getImage(), this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, (int)this.getPawns().get(i).getWidth(), (int)this.getPawns().get(i).getHeight(), this);
         }
     }
 }

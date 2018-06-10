@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -89,7 +90,7 @@ public class ControllerFacade implements IController, KeyListener {
         	
         	switch (choice) {
         	case 0:
-        		level = this.getModel().getLevel1();
+        		level = this.getModel().getTraining();
         		break;
         	case 1:
         		level = this.getModel().getLevel1();
@@ -214,7 +215,10 @@ public class ControllerFacade implements IController, KeyListener {
     	boolean justNow;
     	boolean ready = false;
     	ISquare[][] squares = this.getView().getGameFrame().getSquares();
-    	
+    	Rectangle rect = new Rectangle(this.boss.getX(), this.boss.getY(), this.boss.getWidth(), this.boss.getHeight());
+    	Rectangle myRect = new Rectangle(this.player.getX(), this.player.getY(), this.player.getWidth(), this.player.getHeight());
+    	Rectangle spellRect = new Rectangle(this.spell.getX(), this.spell.getY(), this.spell.getWidth(), this.spell.getHeight());
+
     	while(loop) {
     		justNow = false;
     		this.player.refresh();
@@ -236,8 +240,10 @@ public class ControllerFacade implements IController, KeyListener {
     		this.order = Order.NOPE;
     		
     		if (ready) {
-	    		if (this.boss.isAlive())
+	    		if (this.boss.isAlive()) {
 	    			this.boss.attack(this.player.getPosition(), squares);
+	    			this.boss.animate();
+	    		}
 	    		if (this.mon1.isAlive())
 	    			this.mon1.move(this.player.getPosition(), squares);
 	    		if (this.mon2.isAlive())
@@ -359,6 +365,14 @@ public class ControllerFacade implements IController, KeyListener {
     	    		|| this.boss.isAlive() && this.player.getOldPosition().equals(this.boss.getPosition())) {
     			this.getView().displayMessage("Try again!", "GAME OVER", JOptionPane.ERROR_MESSAGE);
     			loop = false;
+    		}
+    		
+    		if (this.boss.isAlive() && rect.intersects(myRect)) {
+    			// TODO collision player/boss
+    		}
+    		
+    		if (this.boss.isAlive() && rect.intersects(spellRect)) {
+    			// TODO collision spell/boss
     		}
     		
     		/*

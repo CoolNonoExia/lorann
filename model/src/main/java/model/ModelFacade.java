@@ -137,13 +137,6 @@ public final class ModelFacade extends Observable implements IModel {
     	}
     	return list;
     }
-
-//    @Override
-//    public void collisions() {
-//    	if (this.player.getPosition().equals(this.spell.getPosition())) {
-//			
-//    	}
-//    }
     
 	@Override
 	public void move(Order order, IView view) {

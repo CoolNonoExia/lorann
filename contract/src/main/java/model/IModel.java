@@ -26,8 +26,6 @@ public interface IModel {
     List<Level> getFinalLevel() throws SQLException;
 
 	ArrayList<IPawn> setPawns(List<Level> level);
-
-//	void collisions();
 	
 	void move(Order order, IView view);
 	

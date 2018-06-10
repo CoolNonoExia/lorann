@@ -36,6 +36,7 @@ public abstract class Mobile implements IPawn {
 		this.direction = direction;
 	}
 	
+	@Override
 	public Dimension getDimension() {
 		return dimension;
 	}

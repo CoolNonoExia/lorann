@@ -32,6 +32,7 @@ import showboard.squares.Void;
  * @see ISquare
  * @see IPawn
  */
+@SuppressWarnings("deprecation")
 public class BoardFrame extends JFrame implements IBoard {
 
     /** The Constant serialVersionUID. */
@@ -177,6 +178,13 @@ public class BoardFrame extends JFrame implements IBoard {
     @Override
     public final Dimension getDimension() {
         return this.getBoardPanel().getDimension();
+    }
+    
+    /**
+     * Gets the squares.
+     */
+    public ISquare[][] getSquares() {
+    	return this.getBoardPanel().getSquares();
     }
 
     /**

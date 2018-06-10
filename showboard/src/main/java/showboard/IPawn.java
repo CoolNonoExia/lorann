@@ -46,5 +46,7 @@ public interface IPawn extends ISquare {
      */
     Point getPosition();
     
-    Image[] getImage();
+    Image getImage();
+
+	void animate();
 }

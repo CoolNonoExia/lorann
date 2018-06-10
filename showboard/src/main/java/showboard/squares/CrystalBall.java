@@ -18,7 +18,7 @@ public class CrystalBall implements ISquare {
 	}
 
 	@Override
-	public Image[] getImage() {
-		return images;
+	public Image getImage() {
+		return images[0];
 	}
 }

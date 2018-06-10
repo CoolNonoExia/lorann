@@ -1,11 +1,8 @@
 package showboard;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +45,11 @@ import javax.swing.JPanel;
  * @see Observer
  * @see Observable
  */
+/**
+ * @author Nolan
+ *
+ */
+@SuppressWarnings("deprecation")
 class BoardPanel extends JPanel implements Observer {
 
     /** The Constant serialVersionUID. */
@@ -67,20 +69,15 @@ class BoardPanel extends JPanel implements Observer {
 
     /** The no image is used to factorize the NoImage loading. */
     private final BufferedImage noImage;
-    
-    /** The sprite animation loop */
-    private int a;
-
 
     /**
      * Instantiates a new board panel.
      */
     public BoardPanel() {
         super();
-        this.a = 0;
         this.pawns = new ArrayList<>();
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-        final Graphics2D graphics = this.noImage.createGraphics();
+		//final Graphics2D graphics = this.noImage.createGraphics();
     }
 
     /**
@@ -166,7 +163,7 @@ class BoardPanel extends JPanel implements Observer {
         if ((x < 0) || (y < 0) || (x >= widthLimit) || (y >= heightLimit)) {
             image = this.noImage;
         } else {
-            image = this.squares[x][y].getImage()[0];
+            image = this.squares[x][y].getImage();
             if (image == null) {
                 image = this.noImage;
             }
@@ -203,6 +200,13 @@ class BoardPanel extends JPanel implements Observer {
         this.dimension = dimension;
         this.squares = new ISquare[(int) this.getDimension().getWidth()][(int) this.getDimension().getHeight()];
     }
+    
+    /**
+     * Gets the squares.
+     */
+    public ISquare[][] getSquares() {
+    	return this.squares;
+    }
 
     /**
      * Draw square XY.
@@ -234,15 +238,7 @@ class BoardPanel extends JPanel implements Observer {
      */
     private void drawPawnsXY(final Graphics graphics) {
         for (int i = 0; i < this.getPawns().size(); i++) {    
-            if(this.getPawns().get(i).getNbrImages() > 1)
-            {
-            	graphics.drawImage(this.getPawns().get(i).getImage()[a], this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, 32, 32, this);
-            	a++;
-            	if(a >= this.getPawns().get(i).getNbrImages()-1)
-            		a = 0;
-            } else {
-            	graphics.drawImage(this.getPawns().get(i).getImage()[0], this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, 32, 32, this);
-            }
+            graphics.drawImage(this.getPawns().get(i).getImage(), this.getPawns().get(i).getX()*32, this.getPawns().get(i).getY()*32, 32, 32, this);
         }
     }
 }

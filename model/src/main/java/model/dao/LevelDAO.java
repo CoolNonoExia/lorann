@@ -6,42 +6,51 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Example;
 import model.Level;
 
 
 public abstract class LevelDAO extends AbstractDAO {
 
-    /** The sql load1 */
+    /** The sql loads */
+	private static String sqlLoad0   = "{call load0()}";
+	
     private static String sqlLoad1   = "{call load1()}";
     
-    /** The sql load2 */
     private static String sqlLoad2   = "{call load2()}";
     
-    /** The sql load3 */
     private static String sqlLoad3   = "{call load3()}";
     
-    /** The sql load4 */
     private static String sqlLoad4   = "{call load4()}";
     
-    /** The sql load5 */
     private static String sqlLoad5   = "{call load5()}";
     
-
-    /** The id column index. */
-    private static int    idColumnIndex    = 1;
-
-    /** The name column index. */
-    private static int    nameColumnIndex  = 2;
+    private static String sqlLoadF   = "{call loadf()}";
 
     
     /**
-     * Gets the all examples.
+     * Gets the levels in the database.
      *
      * @return the all examples
      * @throws SQLException
      *             the SQL exception
      */
+    
+    public static List<Level> getTraining() throws SQLException {
+		final ArrayList<Level> level0 = new ArrayList<Level>();
+        final CallableStatement callStatement = prepareCall(sqlLoad0);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            while(result.next()) {
+            	Level level = new Level();
+            	level0.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
+            }
+                result.close();
+        }
+        return level0;
+	}
     
     public static List<Level> getLevel1() throws SQLException {
         final ArrayList<Level> level1 = new ArrayList<Level>();
@@ -127,6 +136,23 @@ public abstract class LevelDAO extends AbstractDAO {
         }
         return level5;
     }
+
+	public static List<Level> getFinalLevel() throws SQLException {
+		final ArrayList<Level> levelF = new ArrayList<Level>();
+        final CallableStatement callStatement = prepareCall(sqlLoadF);
+        if (callStatement.execute()) {
+            final ResultSet result = callStatement.getResultSet();
+            while(result.next()) {
+            	Level level = new Level();
+            	levelF.add(level);
+            	for (int i=1; i<=26;i++) {
+            		level.add((int) result.getObject(i));
+            	}
+            }
+                result.close();
+        }
+        return levelF;
+	}
     
     
 }

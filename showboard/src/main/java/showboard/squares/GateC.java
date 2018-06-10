@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import showboard.ISquare;
 
 
-public class GateC implements ISquare {
+public class GateC implements ISquare, Unpassable {
 
 	protected Image[] images;
 	
@@ -18,7 +18,7 @@ public class GateC implements ISquare {
 	}
 
 	@Override
-	public Image[] getImage() {
-		return images;
+	public Image getImage() {
+		return images[0];
 	}
 }

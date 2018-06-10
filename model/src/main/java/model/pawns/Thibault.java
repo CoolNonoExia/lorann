@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import model.Direction;
+import showboard.ISquare;
 
 public class Thibault extends Mobile {
 	
@@ -17,5 +18,9 @@ public class Thibault extends Mobile {
 												ImageIO.read(new File("../sprites/thibault_mouth.png"))});
 		this.nbrImages = 2;
 		this.dimension = new Dimension(96, 161);
+	}
+	
+	public void attack(Point p, ISquare[][] squares) {
+		// TODO
 	}
 }

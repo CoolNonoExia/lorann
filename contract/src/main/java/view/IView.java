@@ -20,8 +20,10 @@ public interface IView {
      * @param message
      *            the message
      */
-    void displayMessage(String message);
+    void displayMessage(String message, String title, int type);
 
+    int choseLevel(String msg, String title, String[] buttons, int index);
+    
 	BoardFrame getGameFrame();
 
 	void setLevel(KeyListener controller, List<Level> level);

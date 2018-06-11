@@ -21,7 +21,7 @@ import view.IView;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-@SuppressWarnings("deprecation")
+
 public final class ModelFacade extends Observable implements IModel {
 	
 	private Player player;

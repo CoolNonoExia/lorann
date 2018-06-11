@@ -32,7 +32,7 @@ import showboard.squares.Void;
  * @see ISquare
  * @see IPawn
  */
-@SuppressWarnings("deprecation")
+
 public class BoardFrame extends JFrame implements IBoard {
 
     /** The Constant serialVersionUID. */

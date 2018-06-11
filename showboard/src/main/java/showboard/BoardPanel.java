@@ -49,7 +49,7 @@ import javax.swing.JPanel;
  * @author Nolan
  *
  */
-@SuppressWarnings("deprecation")
+
 class BoardPanel extends JPanel implements Observer {
 
     /** The Constant serialVersionUID. */

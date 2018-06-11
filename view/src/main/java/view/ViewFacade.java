@@ -28,7 +28,8 @@ public class ViewFacade implements IView {
     
 	@Override
 	public void setLevel(KeyListener controller, List<Level> level) {
-		int[][] tab = new int[level.size()][level.get(0).getLine().size()];
+		int[][] tab;
+		tab = new int[level.size()][level.get(0).getLine().size()];
 		for (int i=0; i<level.size(); i++) {
 			for (int j=0; j<level.get(i).getLine().size(); j++) {
 				tab[i][j] = level.get(i).getLine().get(j);

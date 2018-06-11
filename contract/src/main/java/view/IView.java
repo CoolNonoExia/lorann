@@ -25,6 +25,6 @@ public interface IView {
     int choseLevel(String msg, String title, String[] buttons, int index);
     
 	BoardFrame getGameFrame();
-
+	
 	void setLevel(KeyListener controller, List<Level> level);
 }

@@ -52,7 +52,7 @@ public class BoardFrame extends JFrame implements IBoard {
     public BoardFrame(final String title, final Boolean decorated, final KeyListener controller, int[][] tab) {
         super();
         this.setTitle(title);
-        this.setSize(850, 808);
+        this.setSize(1600, 808);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setUndecorated(decorated);

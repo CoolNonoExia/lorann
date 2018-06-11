@@ -17,7 +17,7 @@ public class Thibault extends Mobile {
 		super(direction, position, new Image[] {ImageIO.read(new File("../sprites/thibault.png")),
 												ImageIO.read(new File("../sprites/thibault_mouth.png"))});
 		this.nbrImages = 2;
-		this.dimension = new Dimension(96, 161);
+		this.dimension = new Dimension(128, 215);
 	}
 	
 	public void attack(Point p, ISquare[][] squares) {

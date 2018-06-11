@@ -43,8 +43,9 @@ public abstract class LevelDAO extends AbstractDAO {
             while(result.next()) {
             	Level level = new Level();
             	level0.add(level);
-            	for (int i=1; i<=26;i++) {
-            		level.add((int) result.getObject(i));
+            	for (int i=1; i<=21;i++) {
+            		if (result.getObject(i) != null)
+            			level.add((int) result.getObject(i));
             	}
             }
                 result.close();
@@ -77,7 +78,7 @@ public abstract class LevelDAO extends AbstractDAO {
             while(result.next()) {
             	Level level = new Level();
             	level2.add(level);
-            	for (int i=1; i<=26;i++) {
+            	for (int i=1; i<=35;i++) {
             		level.add((int) result.getObject(i));
             	}
             }

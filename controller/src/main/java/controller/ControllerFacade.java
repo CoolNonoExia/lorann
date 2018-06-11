@@ -57,6 +57,8 @@ public class ControllerFacade implements IController, KeyListener {
     private Monster3 mon3;
     private Monster4 mon4;
     private Thibault boss;
+    
+    private int pls;
 	
     /**
      * Instantiates a new controller facade.
@@ -87,10 +89,12 @@ public class ControllerFacade implements IController, KeyListener {
         	int choice = this.getView().choseLevel("Please chose a level:", "Lorann Game", buttons, index);
         	final List<Level> level;
         	boolean leave = false;
+        	pls = 0;
         	
         	switch (choice) {
         	case 0:
         		level = this.getModel().getTraining();
+        		pls = 1;
         		break;
         	case 1:
         		level = this.getModel().getLevel1();
@@ -113,6 +117,7 @@ public class ControllerFacade implements IController, KeyListener {
         	default:
         		level = null;
         		leave = true;
+        		pls = 0;
         		break;
         	}
             
@@ -215,15 +220,16 @@ public class ControllerFacade implements IController, KeyListener {
     	boolean justNow;
     	boolean ready = false;
     	ISquare[][] squares = this.getView().getGameFrame().getSquares();
-    	Rectangle rect = new Rectangle(this.boss.getX(), this.boss.getY(), this.boss.getWidth(), this.boss.getHeight());
-    	Rectangle myRect = new Rectangle(this.player.getX(), this.player.getY(), this.player.getWidth(), this.player.getHeight());
-    	Rectangle spellRect = new Rectangle(this.spell.getX(), this.spell.getY(), this.spell.getWidth(), this.spell.getHeight());
+    	Rectangle rect = new Rectangle(this.boss.getX()*32, this.boss.getY()*32, this.boss.getWidth(), this.boss.getHeight());
+    	Rectangle myRect = new Rectangle(this.player.getX()*32, this.player.getY()*32, this.player.getWidth(), this.player.getHeight());
+    	Rectangle spellRect = new Rectangle(this.spell.getX()*32, this.spell.getY()*32, this.spell.getWidth(), this.spell.getHeight());
 
     	while(loop) {
     		justNow = false;
     		this.player.refresh();
     		if (this.order == Order.UP || this.order == Order.LEFT || this.order == Order.DOWN || this.order == Order.RIGHT) {
     			this.getModel().move(this.order, this.getView());
+    			myRect = new Rectangle(this.player.getX()*32, this.player.getY()*32, this.player.getWidth(), this.player.getHeight());
     			ready = true;
     		}
     		
@@ -244,13 +250,13 @@ public class ControllerFacade implements IController, KeyListener {
 	    			this.boss.attack(this.player.getPosition(), squares);
 	    			this.boss.animate();
 	    		}
-	    		if (this.mon1.isAlive())
+	    		if (this.mon1.isAlive() && pls != 1)
 	    			this.mon1.move(this.player.getPosition(), squares);
-	    		if (this.mon2.isAlive())
+	    		if (this.mon2.isAlive() && pls != 1)
 	    			this.mon2.move(this.player.getPosition(), squares);
-	    		if (this.mon3.isAlive())
+	    		if (this.mon3.isAlive() && pls != 1)
 	    			this.mon3.move(this.player.getPosition(), squares);
-	    		if (this.mon4.isAlive())
+	    		if (this.mon4.isAlive() && pls != 1)
 	    			this.mon4.move(this.player.getPosition(), squares);
     		}
     		
@@ -259,6 +265,7 @@ public class ControllerFacade implements IController, KeyListener {
         		
         		if (spellPass) {
         			this.spell.move();
+        			spellRect = new Rectangle(this.spell.getX()*32, this.spell.getY()*32, this.spell.getWidth(), this.spell.getHeight());
         		} else {
         			switch(this.spell.getDirection()) {
     				case DOWN:
@@ -303,6 +310,9 @@ public class ControllerFacade implements IController, KeyListener {
 						for (int j = 0; j < squares[0].length; j++) {
 							if (squares[i][j] instanceof GateC) {
 								squares[i][j] = new GateO();
+								squares = this.getView().getGameFrame().getSquares();
+							} else if (squares[i][j] instanceof GateO) {
+								squares[i][j] = new GateC();
 								squares = this.getView().getGameFrame().getSquares();
 							}
 						}
@@ -357,18 +367,17 @@ public class ControllerFacade implements IController, KeyListener {
     				|| this.mon2.isAlive() && this.player.getPosition().equals(this.mon2.getPosition())
     	    		|| this.mon3.isAlive() && this.player.getPosition().equals(this.mon3.getPosition())
     	    		|| this.mon4.isAlive() && this.player.getPosition().equals(this.mon4.getPosition())
-    	    		|| this.boss.isAlive() && this.player.getPosition().equals(this.boss.getPosition())
     	    		|| this.mon1.isAlive() && this.player.getOldPosition().equals(this.mon1.getPosition())
     	    		|| this.mon2.isAlive() && this.player.getOldPosition().equals(this.mon2.getPosition())
     	    		|| this.mon3.isAlive() && this.player.getOldPosition().equals(this.mon3.getPosition())
-    	    		|| this.mon4.isAlive() && this.player.getOldPosition().equals(this.mon4.getPosition())
-    	    		|| this.boss.isAlive() && this.player.getOldPosition().equals(this.boss.getPosition())) {
+    	    		|| this.mon4.isAlive() && this.player.getOldPosition().equals(this.mon4.getPosition())) {
     			this.getView().displayMessage("Try again!", "GAME OVER", JOptionPane.ERROR_MESSAGE);
     			loop = false;
     		}
-    		
     		if (this.boss.isAlive() && rect.intersects(myRect)) {
     			// TODO collision player/boss
+    			this.getView().displayMessage("Try again!", "GAME OVER", JOptionPane.ERROR_MESSAGE);
+    			loop = false;
     		}
     		
     		if (this.boss.isAlive() && rect.intersects(spellRect)) {
